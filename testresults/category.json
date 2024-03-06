@@ -1,0 +1,2 @@
+[
+{"name":"tests/category/hello.nim c","category":"category","target":"c","action":"run","result":"reSuccess","expected":"","given":"","machine":"maikelpc","commit":"315e5ea509d","branch":"main"}]

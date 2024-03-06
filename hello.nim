@@ -1,15 +1,19 @@
-proc askName: string =
-  echo "What's your name? "
-  var name: string = readLine(stdin)
-  return name
+import std/httpclient
 
-proc sayName(name: string) =
-  if name == "":
-    echo "How's it possible to have no name"
-  elif name == "maikel":
-    echo "Hi Maikel, welcome to your PC"
-  else:
-    echo "Hi, ", name, "!"
+proc getPage*()  :string =
+  var client = newHttpClient()
+  var url = "https://mkl.lol/xrpc/_health"
+  var content = "" 
+  try:
+    content = client.getContent(url)
+  finally:
+    client.close()
+  return content
+  
+#var name = askName()
+#sayName(name)
 
-var name = askName()
-sayName(name)
+var content = getPage()
+echo content
+
+# Notice that sometimes you need nix-shell -p openssl
